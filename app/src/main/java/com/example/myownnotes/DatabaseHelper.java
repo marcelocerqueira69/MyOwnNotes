@@ -11,8 +11,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "notes_table";
     public static final String ID = "ID";
     public static final String ASSUNTO = "ASSUNTO";
-    public static final String LOCAL = "LOCAL";
     public static final String DESCRICAO = "DESCRIÇÃO";
+    public static final String DATA = "DATA";
 
 
     public DatabaseHelper(Context context) {
@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT, ASSUNTO TEXT, LOCAL TEXT, DESCRICAO TEXT)");
+        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT, ASSUNTO TEXT, DESCRICAO TEXT, DATA DATE )");
     }
 
     @Override

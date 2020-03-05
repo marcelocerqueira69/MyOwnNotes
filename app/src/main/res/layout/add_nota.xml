@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/add_note"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
+        android:id="@+id/addAssunto"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Assunto"/>
+
+    <EditText
+        android:id="@+id/addDescricao"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Descrição"/>
+
+
+    <Button
+        android:id="@+id/cancel_note"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/sample"
+        android:textColor="@color/textColor"
+        android:text="@string/cancel"/>
+
+    <Button
+        android:id="@+id/confirm_note"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="58dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sample"
+        android:textColor="@color/textColor"
+        android:text="@string/confirm"/>
+
+</RelativeLayout>

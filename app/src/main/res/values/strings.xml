@@ -8,4 +8,6 @@
     <string name="anonymous">Entrar como Anónimo</string>
     <string name="cancel">Cancelar</string>
     <string name="confirm">Confirmar</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>

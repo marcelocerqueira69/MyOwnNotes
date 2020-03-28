@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/close_edit"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/close"/>
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/edit_note"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"/>
+
+    <EditText
+        android:id="@+id/editAssunto"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/editDescricao"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp">
+
+        <Button
+            android:id="@+id/confirm_edit"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:background="@drawable/sample"
+            android:textColor="@color/textColor"
+            android:text="@string/editar"/>
+
+        <Button
+            android:id="@+id/delete_note"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/sample"
+            android:textColor="@color/textColor"
+            android:text="@string/eliminar"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

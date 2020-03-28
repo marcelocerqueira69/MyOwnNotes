@@ -15,9 +15,13 @@ import java.util.List;
 
 public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder>{
     private List<MenuNote> notes;
+    Context context;
+    private OnNoteListener mOnNoteListener;
 
-    public NotesRecyclerAdapter(List<MenuNote> notes){
+    public NotesRecyclerAdapter(Context context, List<MenuNote> notes, OnNoteListener mOnNoteListener){
+        this.context = context;
         this.notes = notes;
+        this.mOnNoteListener = mOnNoteListener;
     }
 
     @NonNull
@@ -26,9 +30,9 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
         View view;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         view = inflater.inflate(R.layout.note_item, parent, false);
-        ViewHolder v = new ViewHolder(view);
+        ViewHolder v = new ViewHolder(view, mOnNoteListener);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view, mOnNoteListener);
     }
 
     @Override
@@ -44,18 +48,28 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView assunto;
         TextView descricao;
         TextView data;
+        OnNoteListener onNoteListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
-
+            this.onNoteListener = onNoteListener;
             assunto = itemView.findViewById(R.id.assunto);
             descricao = itemView.findViewById(R.id.descricao);
             data = itemView.findViewById(R.id.data);
-
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
     }
 }

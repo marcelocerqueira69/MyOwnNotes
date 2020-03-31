@@ -30,41 +30,6 @@ public class MainActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     CardView loginButton;
-    String URL="http://192.168.1.67:4000/user/login";
-    private RequestQueue requestQueue;
-
-    /*public void Submit(String userPassword){
-        final String savedata = userPassword;
-
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try{
-                    JSONObject objres = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(), objres.toString(), Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            public String getBodyContentType(){return "application/json; charset=utf-8";}
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                return savedata == null ? null : savedata.getBytes(StandardCharsets.UTF_8);
-            }
-        };
-
-        requestQueue.add(stringRequest);
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String userPassword = "{ password: \'" + password.getText().toString() + "\', email: \'" + username.getText().toString() + "\'}";
-                Submit(userPassword);
+
                 System.out.println(userPassword);
 
             }
@@ -99,45 +64,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void Submit(String data)
-    {
-        final String savedata= data;
 
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject objres=new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),objres.toString(),Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_LONG).show();
-
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    return savedata == null ? null : savedata.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    return null;
-                }
-            }
-
-        };
-        requestQueue.add(stringRequest);
-    }
 
 
 }

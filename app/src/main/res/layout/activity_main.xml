@@ -68,6 +68,16 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/regist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:textSize="15sp"
+        android:text="@string/registar"/>
+
+    <TextView
         android:id="@+id/anonymous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

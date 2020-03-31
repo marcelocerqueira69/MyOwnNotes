@@ -5,29 +5,38 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.auth0.android.jwt.Claim;
+import com.auth0.android.jwt.JWT;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView anonymous;
-    EditText username;
+    TextView regist;
+    EditText email;
     EditText password;
     CardView loginButton;
 
@@ -36,20 +45,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        regist = findViewById(R.id.regist);
+        email = findViewById(R.id.emailLogin);
+        password = findViewById(R.id.passwordLogin);
         loginButton = findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userPassword = "{ password: \'" + password.getText().toString() + "\', email: \'" + username.getText().toString() + "\'}";
-
-                System.out.println(userPassword);
+                if(password.getText().toString().equals("") && email.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Tem de inserir uma password e um email", Toast.LENGTH_SHORT).show();
+                }else if (password.getText().toString().equals("") && email.getText().toString() != ("")){
+                    Toast.makeText(getApplicationContext(), "Tem de inserir uma password", Toast.LENGTH_SHORT).show();
+                }else if (password.getText().toString() != ("") && email.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Tem de inserir um email", Toast.LENGTH_SHORT).show();
+                }else{
+                    login();
+                }
 
             }
         });
 
+
+        regist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registIntent = new Intent(MainActivity.this, RegistActivity.class);
+                startActivity(registIntent);
+            }
+        });
 
 
 
@@ -64,6 +88,72 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void login() {
+        String url = MySingleton.URL + "user/login";
+
+
+        StringRequest postResquest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JWT jwt = new JWT(response);
+                            Claim subscriptionMetaData = jwt.getClaim("email");
+                            String parsedValue = subscriptionMetaData.asString();
+
+                            if (email.getText().toString().equals(parsedValue)){
+                                //Intent intent = new Intent(RegistActivity.this, MainActivity.class);
+                                //startActivity(intent);
+                                Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
+                                //finish();
+                            }else{
+                                Toast.makeText(getApplicationContext(), "E-mail não existe", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Password incorreta", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        NetworkResponse response = error.networkResponse;
+                        Log.d("ERRO1", "onErrorResponse1: " +error.getMessage());
+                        if (error instanceof ServerError && response != null) {
+                            try {
+                                String res = new String(response.data,
+                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                                JSONObject obj = new JSONObject(res);
+                            } catch (UnsupportedEncodingException e1) {
+                                e1.printStackTrace();
+                                Log.d("ERRO2", "onErrorResponse2: " +e1.getMessage());
+                            } catch (JSONException e2) {
+                                e2.printStackTrace();
+                                Log.d("ERRO3", "onErrorResponse3: " +e2.getMessage());
+                            }
+                        }
+                    }
+                }) {
+
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parametros = new HashMap<>();
+
+                String pass = password.getText().toString().trim();
+
+                parametros.put("password", pass);
+
+                parametros.put("email", email.getText().toString().trim());
+
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(this).addToRequestQueue(postResquest);
+    }
 
 
 

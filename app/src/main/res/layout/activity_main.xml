@@ -26,16 +26,16 @@
 
     
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/emailLogin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="270dp"
-        android:hint="Username"/>
+        android:hint="Email"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordLogin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -75,7 +75,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="70dp"
         android:textSize="15sp"
-        android:text="@string/registar"/>
+        android:text="@string/registar2"/>
 
     <TextView
         android:id="@+id/anonymous"

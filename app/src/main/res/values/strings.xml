@@ -8,7 +8,6 @@
     <string name="confirm">Confirmar</string>
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
-    <string name="registar">Registar</string>
     <string name="title_activity_regist">RegistActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -18,4 +17,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="nome">Nome</string>
+    <string name="username">Nome de Utilizador</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmar_password">Confirmar Password</string>
+    <string name="registar">Registar</string>
+    <string name="registar2"><u>Registar</u></string>
 </resources>

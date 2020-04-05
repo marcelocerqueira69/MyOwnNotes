@@ -103,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
                             String parsedValue = subscriptionMetaData.asString();
 
                             if (email.getText().toString().equals(parsedValue)){
-                                //Intent intent = new Intent(RegistActivity.this, MainActivity.class);
-                                //startActivity(intent);
+                                Intent mapIntent = new Intent(MainActivity.this, MapActivity.class);
+                                startActivity(mapIntent);
                                 Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
-                                //finish();
+                                finish();
                             }else{
                                 Toast.makeText(getApplicationContext(), "E-mail não existe", Toast.LENGTH_SHORT).show();
                             }

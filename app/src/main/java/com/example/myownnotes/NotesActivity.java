@@ -164,7 +164,5 @@ public class NotesActivity extends AppCompatActivity implements NotesRecyclerAda
             }
         });
 
-
-
     }
 }

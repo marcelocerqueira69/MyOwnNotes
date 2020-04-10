@@ -24,4 +24,7 @@
     <string name="confirmar_password">Confirmar Password</string>
     <string name="registar">Registar</string>
     <string name="registar2"><u>Registar</u></string>
+    <string name="tirar_foto">Tirar foto</string>
+    <string name="assunto">Assunto</string>
+    <string name="descricao">Descrição</string>
 </resources>

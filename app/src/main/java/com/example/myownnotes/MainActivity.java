@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     EditText email;
     EditText password;
     CardView loginButton;
+    String id_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        regist.setOnClickListener(new View.OnClickListener() {
+            regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registIntent = new Intent(MainActivity.this, RegistActivity.class);
@@ -102,8 +103,18 @@ public class MainActivity extends AppCompatActivity {
                             Claim subscriptionMetaData = jwt.getClaim("email");
                             String parsedValue = subscriptionMetaData.asString();
 
+                            Claim subscriptionMetaData2 = jwt.getClaim("id_user");
+                            String parsedValue2 = subscriptionMetaData2.asString();
+
+                            Log.d("Email: ", parsedValue);
+                            Log.d("ID do utilizador: ", parsedValue2);
+                            id_user = parsedValue2;
+
                             if (email.getText().toString().equals(parsedValue)){
                                 Intent mapIntent = new Intent(MainActivity.this, MapActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("id_user", id_user);
+                                mapIntent.putExtras(bundle);
                                 startActivity(mapIntent);
                                 Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
                                 finish();

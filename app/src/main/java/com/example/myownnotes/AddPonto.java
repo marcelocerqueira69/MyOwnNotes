@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,9 +32,13 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.String.valueOf;
 
 public class AddPonto extends AppCompatActivity {
 
@@ -45,6 +50,10 @@ public class AddPonto extends AppCompatActivity {
     Button cancelPonto;
     double latitude;
     double longitude;
+    String encodedImage;
+    String latitudeString;
+    String longitudeSting;
+    String id_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,10 @@ public class AddPonto extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         latitude = bundle.getDouble("latitude");
         longitude = bundle.getDouble("longitude");
+        id_user = bundle.getString("id_user");
+
+        latitudeString = valueOf(latitude);
+        longitudeSting = valueOf(longitude);
 
 
 
@@ -83,6 +96,14 @@ public class AddPonto extends AppCompatActivity {
                 finish();
             }
         });
+
+        confirmPonto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                markPoint();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -90,11 +111,17 @@ public class AddPonto extends AppCompatActivity {
         if(requestCode == 100){
             Bitmap captureImage = (Bitmap) data.getExtras().get("data");
             takenPicture.setImageBitmap(captureImage);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            captureImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte b[] = baos.toByteArray();
+
+            encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
         }
     }
 
     private void markPoint() {
         String url = MySingleton.URL + "pontos/createPonto";
+        final String validar = "true";
 
         StringRequest postResquest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -103,7 +130,7 @@ public class AddPonto extends AppCompatActivity {
 
                         Log.d("REGISTO", "onResponse: " +response.length());
                         try {
-                            if(response.equals(true)){
+                            if(response.equals(validar)){
                                 Toast.makeText(getApplicationContext(), "Ponto criado", Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(getApplicationContext(), "Ponto não criado", Toast.LENGTH_SHORT).show();
@@ -142,7 +169,10 @@ public class AddPonto extends AppCompatActivity {
 
                 parametros.put("assunto", assunto.getText().toString().trim());
                 parametros.put("descricao", descricao.getText().toString().trim());
-                //parametros.put("latitude", latitude);
+                parametros.put("latitude", latitudeString);
+                parametros.put("longitude", longitudeSting);
+                parametros.put("imagem", encodedImage);
+                parametros.put("id_user", id_user);
 
                 return parametros;
             }

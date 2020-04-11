@@ -33,6 +33,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     FloatingActionButton logout;
     public double latitude;
     public double longitude;
+    String id_user;
 
 
     @Override
@@ -43,6 +44,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Bundle bundle = getIntent().getExtras();
+        id_user = bundle.getString("id_user");
+
+
 
         logout = findViewById(R.id.logout);
 
@@ -60,6 +66,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
+
+
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
@@ -69,9 +78,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 Bundle bundle = new Bundle();
                 bundle.putDouble("latitude", latitude);
                 bundle.putDouble("longitude", longitude);
+                bundle.putString("id_user", id_user);
                 newPonto.putExtras(bundle);
                 startActivity(newPonto);
-                Toast.makeText(getApplicationContext(), latLng.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), latLng.toString() + "\n" + id_user, Toast.LENGTH_SHORT).show();
 
 
                 /*MarkerOptions markerOptions = new MarkerOptions();

@@ -52,7 +52,7 @@ public class AddPonto extends AppCompatActivity {
     double longitude;
     String encodedImage;
     String latitudeString;
-    String longitudeSting;
+    String longitudeString;
     String id_user;
 
     @Override
@@ -72,7 +72,7 @@ public class AddPonto extends AppCompatActivity {
         id_user = bundle.getString("id_user");
 
         latitudeString = valueOf(latitude);
-        longitudeSting = valueOf(longitude);
+        longitudeString = valueOf(longitude);
 
 
 
@@ -93,17 +93,30 @@ public class AddPonto extends AppCompatActivity {
         cancelPonto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent refresh = new Intent(AddPonto.this, MapActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id_user", id_user);
+                refresh.putExtras(bundle);
+                startActivity(refresh);
                 finish();
+
             }
         });
 
         confirmPonto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent refresh = new Intent(AddPonto.this, MapActivity.class);
                 markPoint();
+                Bundle bundle = new Bundle();
+                bundle.putString("id_user", id_user);
+                refresh.putExtras(bundle);
+                startActivity(refresh);
                 finish();
             }
         });
+
+
     }
 
     @Override
@@ -131,13 +144,13 @@ public class AddPonto extends AppCompatActivity {
                         Log.d("REGISTO", "onResponse: " +response.length());
                         try {
                             if(response.equals(validar)){
-                                Toast.makeText(getApplicationContext(), "Ponto criado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.ponto_criado, Toast.LENGTH_SHORT).show();
                             }else{
-                                Toast.makeText(getApplicationContext(), "Ponto não criado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.ponto_nao_criado, Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Erro na conexão com o WS", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.ws_connection_err, Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -170,7 +183,7 @@ public class AddPonto extends AppCompatActivity {
                 parametros.put("assunto", assunto.getText().toString().trim());
                 parametros.put("descricao", descricao.getText().toString().trim());
                 parametros.put("latitude", latitudeString);
-                parametros.put("longitude", longitudeSting);
+                parametros.put("longitude", longitudeString);
                 parametros.put("imagem", encodedImage);
                 parametros.put("id_user", id_user);
 

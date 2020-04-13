@@ -10,8 +10,9 @@
         android:id="@+id/logoLogin"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
         android:src="@drawable/marker" />
 
     <TextView
@@ -20,30 +21,30 @@
         android:text="@string/login"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_centerInParent="true"
+        android:layout_marginLeft="50dp"
         android:layout_below="@+id/logoLogin"
         android:layout_marginTop="30dp"/>
 
-
+    
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/emailLogin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="270dp"
-        android:hint="Username"/>
+        android:hint="@string/email"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordLogin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="230dp"
         android:inputType="textPassword"
-        android:hint="Password"/>
-
+        android:hint="@string/password"/>
+    
     <androidx.cardview.widget.CardView
         android:id="@+id/loginButton"
         android:layout_width="200dp"
@@ -68,6 +69,16 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/regist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:textSize="15sp"
+        android:text="@string/registar2"/>
+
+    <TextView
         android:id="@+id/anonymous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,4 +90,4 @@
 
 
 
-</RelativeLayout>
+    </RelativeLayout>

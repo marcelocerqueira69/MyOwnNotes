@@ -12,7 +12,7 @@ public class MySingleton {
     private RequestQueue requestQueue;
     private static Context mycontext;
 
-    public static String URL = "http://192.168.1.99:4000/";
+    public static String URL = "http://192.168.1.132:4000/";
 
     private MySingleton(Context context){
         mycontext = context;

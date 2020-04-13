@@ -116,7 +116,6 @@ public class NotesActivity extends AppCompatActivity implements NotesRecyclerAda
         id = note.getId();
         descricao = note.getDescricao();
         assunto = note.getAssunto();
-        Toast.makeText(context,"You clicked on the item number " + position + "\nid: " + id + "\nAssunto: " + assunto + "\nDescrição: " + descricao, Toast.LENGTH_SHORT).show();
 
 
         final Dialog dialog = new Dialog(context);
@@ -147,7 +146,7 @@ public class NotesActivity extends AppCompatActivity implements NotesRecyclerAda
             public void onClick(View v) {
                 if(db.deleteNote(id)){
                     dialog.dismiss();
-                    Toast.makeText(context, "Nota eliminada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.nota_eliminada, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -159,7 +158,7 @@ public class NotesActivity extends AppCompatActivity implements NotesRecyclerAda
             public void onClick(View v) {
                 if(db.editNote(id, editAssunto.getText().toString(), editDescricao.getText().toString())){
                     dialog.dismiss();
-                    Toast.makeText(context, "Nota Editada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.nota_editada, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(password.getText().toString().equals("") && email.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Tem de inserir uma password e um email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.err_email_password, Toast.LENGTH_SHORT).show();
                 }else if (password.getText().toString().equals("") && email.getText().toString() != ("")){
-                    Toast.makeText(getApplicationContext(), "Tem de inserir uma password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.err_password, Toast.LENGTH_SHORT).show();
                 }else if (password.getText().toString() != ("") && email.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Tem de inserir um email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.err_email, Toast.LENGTH_SHORT).show();
                 }else{
                     login();
                 }
@@ -112,18 +112,20 @@ public class MainActivity extends AppCompatActivity {
 
                             if (email.getText().toString().equals(parsedValue)){
                                 Intent mapIntent = new Intent(MainActivity.this, MapActivity.class);
+
                                 Bundle bundle = new Bundle();
                                 bundle.putString("id_user", id_user);
                                 mapIntent.putExtras(bundle);
+                                
                                 startActivity(mapIntent);
-                                Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.success_login, Toast.LENGTH_SHORT).show();
                                 finish();
                             }else{
-                                Toast.makeText(getApplicationContext(), "E-mail não existe", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.email_err, Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Password incorreta", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.passwd_incorreta, Toast.LENGTH_SHORT).show();
                         }
 
                     }

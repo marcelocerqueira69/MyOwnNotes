@@ -2,21 +2,11 @@
     <string name="app_name">MyOwnNotes</string>
     <string name="sign_in">Login</string>
     <string name="login">Login</string>
-
     <string name="anonymous"><u>Entrar como Anónimo</u></string>
     <string name="cancel">Cancelar</string>
     <string name="confirm">Confirmar</string>
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
-    <string name="title_activity_regist">RegistActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="nome">Nome</string>
     <string name="username">Nome de Utilizador</string>
     <string name="email">Email</string>
@@ -27,4 +17,27 @@
     <string name="tirar_foto">Tirar foto</string>
     <string name="assunto">Assunto</string>
     <string name="descricao">Descrição</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="ws_connection_err">Erro na conexão com o WS</string>
+    <string name="ponto_eliminado">Ponto eliminado</string>
+    <string name="ponto_nao_eliminado">Ponto não eliminado</string>
+    <string name="ponto_atualizado">Ponto atualizado</string>
+    <string name="ponto_nao_atualizado">Ponto não atualizado</string>
+    <string name="err_email_password">Tem de inserir uma password e um email</string>
+    <string name="err_password">Tem de inserir uma password</string>
+    <string name="err_email">Tem de inserir um email</string>
+    <string name="success_login">Login efetuado com sucesso</string>
+    <string name="email_err">Email não existe</string>
+    <string name="passwd_incorreta">Password incorreta</string>
+    <string name="ponto_nao_criado">Ponto não criado</string>
+    <string name="ponto_criado">Ponto criado</string>
+    <string name="nota_editada">Nota Editada</string>
+    <string name="nota_eliminada">Nota eliminada</string>
+    <string name="sucesso_regist">Registado com sucesso</string>
+    <string name="insucesso_registo">Utilizador já existe no sistema</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="problemas">Problemas</string>
+    <string name="notas">Notas</string>
+    <string name="problemas_do_user">Problemas do user</string>
+    <string name="data">Data</string>
 </resources>

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotesActivity">
+    tools:context=".ProblemasActivity">
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -17,20 +19,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="@string/notas"
-                android:textSize="20sp"
-                android:textColor="@color/textColor"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/textColor"
+            android:text="@string/problemas_do_user"/>
 
             <ImageView
-                android:id="@+id/addNote"
+                android:id="@+id/closeProblems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_add_black_24dp"
+                android:src="@drawable/close2"
                 android:layout_alignParentRight="true"
                 android:paddingRight="10dp"
                 android:layout_centerVertical="true"/>
@@ -39,10 +41,11 @@
 
 
 
+
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notasCard"
+        android:id="@+id/prolemasUser"
         android:layout_width="match_parent"
         android:layout_height="700dp"
         android:layout_marginTop="40dp" />

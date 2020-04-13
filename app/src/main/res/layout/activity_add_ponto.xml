@@ -71,7 +71,7 @@
             android:layout_width="120dp"
             android:layout_height="30dp"
             android:background="@drawable/sample"
-            android:text="Confirmar"
+            android:text="@string/confirmar"
             android:textColor="@color/textColor"
             android:layout_alignParentRight="true"/>
 

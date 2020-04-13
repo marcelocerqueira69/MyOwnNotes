@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#FF5722</color>
     <color name="colorAccent">#FF5722</color>
     <color name="colorNoteItem">#EBEBE0</color>
-    <color name="line">#ECECEC</color>
+    <color name="line">#000000</color>
     <color name="textColor">#FFFFFF</color>
 </resources>

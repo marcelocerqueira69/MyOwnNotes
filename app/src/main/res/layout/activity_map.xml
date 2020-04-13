@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
-                android:text="Problemas"
+                android:text="@string/problemas"
                 android:textColor="@color/textColor"
                 android:textSize="20sp" />
 

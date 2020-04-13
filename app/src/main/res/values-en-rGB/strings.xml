@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyOwnNotes</string>
+    <string name="sign_in">Login</string>
+    <string name="login">Login</string>
+    <string name="anonymous"><u>Entrar como Anónimo</u></string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="editar">Edit</string>
+    <string name="eliminar">Delete</string>
+    <string name="nome">Name</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmar_password">Confirm Password</string>
+    <string name="registar">Regist</string>
+    <string name="registar2"><u>Regist</u></string>
+    <string name="tirar_foto">Take picture</string>
+    <string name="assunto">Subject</string>
+    <string name="descricao">Description</string>
+    <string name="cancelar">Cancel</string>
+    <string name="ws_connection_err">Error on the WS connection</string>
+    <string name="ponto_eliminado">Point deleted</string>
+    <string name="ponto_atualizado">Point updated</string>
+    <string name="ponto_nao_atualizado">Point not updated</string>
+    <string name="err_email_password">You have to insert an email and a password</string>
+    <string name="err_password">You have to insert a password</string>
+    <string name="err_email">You have to insert an email</string>
+    <string name="ponto_nao_eliminado">Point not deleted</string>
+    <string name="success_login">Login successful</string>
+    <string name="email_err">Email not existent</string>
+    <string name="passwd_incorreta">Incorrect password</string>
+    <string name="ponto_nao_criado">Point not created</string>
+    <string name="ponto_criado">"Point created "</string>
+    <string name="nota_editada">Note edited</string>
+    <string name="sucesso_regist">Regist successful</string>
+    <string name="nota_eliminada">Note deleted</string>
+    <string name="insucesso_registo">Regist unsuccessful</string>
+    <string name="confirmar">Confirm</string>
+    <string name="problemas">Problems</string>
+    <string name="notas">Notes</string>
+    <string name="problemas_do_user">User problems</string>
+    <string name="data">Date</string>
+</resources>

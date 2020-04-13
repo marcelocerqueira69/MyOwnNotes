@@ -82,15 +82,15 @@ public class RegistActivity extends AppCompatActivity {
                             if(response.length() == 15 ) {
                                 Intent intent = new Intent(RegistActivity.this, MainActivity.class);
                                 startActivity(intent);
-                                Toast.makeText(getApplicationContext(), "Registado com sucesso", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.sucesso_regist, Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
-                                Toast.makeText(getApplicationContext(), "Utilizador já existe no sistema", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.insucesso_registo, Toast.LENGTH_SHORT).show();
 
                             }
 
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Erro na conexão com o WS", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.ws_connection_err, Toast.LENGTH_SHORT).show();
                         }
 
                     }
